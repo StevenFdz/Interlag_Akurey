@@ -4,12 +4,15 @@
  */
 package Model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
+ * In this file we found the class that has the responsability of interprete
+ * the input from the user, all the relation about the reading of the input
+ * and the evaluations of the expressions work from here. The exceptions have not
+ * implemented yet then only work with correct syntax in the inputs
  */
 public class Script {
     
@@ -48,7 +51,7 @@ public class Script {
             case "funct":   //Example funct name_function param1 param2 ...
                 String nameFunction = expressionSplited[1];
                 String[] params = getParams(expressionSplited);
-                return transpiler.translateFunction(nameFunction, params);
+                return transpiler.translateDefineFunction(nameFunction, params);
                 
             case "if":  //Example: if value1 ==/!=/<=/>=/</> value2
                 String value1 = expressionSplited[1];
@@ -74,14 +77,57 @@ public class Script {
                 String name_library = expressionSplited[1];
                 return transpiler.translateImport(name_library);
               
-            case "end":
+            case "end": //Example: end
                 return transpiler.translateEnd();
+                
+            case "initGUI": //Example initGUI
+                return transpiler.translateImport(
+                        transpiler.getUI_generator().initLibrary());
+                
+            case "GUI": //Example: GUI ... ... ...
+                return evaluateGUIExpression(
+                        Arrays.copyOfRange(expressionSplited, 1, expressionSplited.length));
+                
+            //Adding more cases we can create new functionalities in our program
+     
             default:
                 return "\n";
         }
     }
-    
-    private String[] getParams(String[] expressionSplited){
+    private String evaluateGUIExpression(String[] splitedExpression){
+       
+        String key_word = splitedExpression[0]; 
+        String result_variable = splitedExpression[1];
+        
+        switch(key_word){
+            case "screen":  //Example: screen result_variable name_screen
+                String text_component = splitedExpression[2];
+                return transpiler.getIndent() + transpiler.getUI_generator().createScreen(result_variable, text_component);
+                
+            case "button": //Example: button result_variable button_text
+                text_component = splitedExpression[2];
+                return transpiler.getIndent() + transpiler.getUI_generator().createButton(result_variable, text_component);
+                
+            case "label": //Example: label result_variable label_text
+                text_component = splitedExpression[2];
+                return transpiler.getIndent() + transpiler.getUI_generator().createLabel(result_variable, text_component);
+                
+            case "input": //Example: input result_variable
+                return transpiler.getIndent() + transpiler.getUI_generator().createInput(result_variable);
+                
+            case "selector": //Example: selector result_variable
+                return transpiler.getIndent() + transpiler.getUI_generator().createSelector(result_variable);
+               
+            case "panel": //Example: panel result_variable
+                return transpiler.getIndent() + transpiler.getUI_generator().createPanel(result_variable);
+                
+            default:
+                return "\n";  
+            //Adding more cases we can create new functionalities in our program
+            // in reference with the GUI aspects
+        }
+    }
+    private String[] getParams(String[] expressionSplited){ //This function take the expression and return the params for that the function or other method can use them
         if(expressionSplited.length < 2){
             return null;
         }
@@ -89,5 +135,4 @@ public class Script {
             return Arrays.copyOfRange(expressionSplited, 2, expressionSplited.length);
         }
     }
-    
 }

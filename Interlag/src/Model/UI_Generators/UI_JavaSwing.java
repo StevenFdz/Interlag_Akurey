@@ -4,47 +4,59 @@
  */
 package Model.UI_Generators;
 
-import Model.I_UIGenerator;
+import Model.EnumProgrammingLanguages;
+import Model.Enum_UI;
+import Model.UI_Generator;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
  */
-public class UI_JavaSwing implements I_UIGenerator{
+public class UI_JavaSwing extends UI_Generator{
 
-    @Override
-    public void createScreen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UI_JavaSwing() {
+        this.setLanguague(EnumProgrammingLanguages.JAVA);
+        this.setUi_generator(Enum_UI.SWING);
     }
 
     @Override
-    public void createLabel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String initLibrary() {
+        return "javax.swing.*";
     }
 
     @Override
-    public void createButton() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String createScreen(String variable_result, String name_screen) {
+        return createStructureExpression("JFrame",name_screen , variable_result);
     }
 
     @Override
-    public void createInput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String createSelector(String variable_result) {
+        return createStructureExpression("JComboBox", "", variable_result);
     }
 
     @Override
-    public void createSelector() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String createLabel(String variable_result, String label_text) {
+        return createStructureExpression("JLabel",label_text , variable_result);
     }
 
     @Override
-    public void createCheckButton() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String createButton(String variable_result, String button_text) {
+        return createStructureExpression("JButton", button_text, variable_result);
     }
 
     @Override
-    public void createPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String createInput(String variable_result) {
+        return createStructureExpression("JTextField", "", variable_result);
+    }
+
+    @Override
+    public String createPanel(String variable_result) {
+        return createStructureExpression("JPanel", "", variable_result);
     }
     
+    public String createStructureExpression(String dataType, String params, String variable_result){
+        String result = this.getIndent() + dataType + displaySpace() + 
+                variable_result + " = new " + dataType + "(" + params + ");\n";
+        return result;
+    } 
 }

@@ -9,22 +9,16 @@ import Model.Transpiler;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
  */
 public class TranspilerC_Sharp extends Transpiler implements ItypeLanguage{
 
-    @Override
-    public void translate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public String translateVariable(String nameVar, String valueVar) {
         String result = this.getIndent() + defineType(valueVar) + displaySpace() + nameVar + " = " + valueVar + ";\n";
         return result;
     }
-
-
   
     @Override
     public String translateImport(String name_library) {
@@ -33,13 +27,12 @@ public class TranspilerC_Sharp extends Transpiler implements ItypeLanguage{
     }
     
     @Override
-    public String translateFunction(String nameFunction, String[] params) {
+    public String translateDefineFunction(String nameFunction, String[] params) {
         String result = this.getIndent() + defineTypeFunction() + displaySpace() + 
                 nameFunction + "(" + this.getStructParams(params) + "){\n";
         addTab();
         return result;
     }
-
 
     @Override
     public String translateFor(String item, String arrayList) {
@@ -72,7 +65,26 @@ public class TranspilerC_Sharp extends Transpiler implements ItypeLanguage{
         */
         return "typeFunction";
     }
-
+    /*
+        The type languages must do a override of this functions because
+        the normal working of the function returns the params without the typeData
+        so for change this behavior we need to do a override in the function
+    */
+    @Override
+    public String getStructParams(String[] params){
+        String result = "";
+        if(params != null){
+            for(int i=0;i < params.length; i++){
+                if(i != params.length - 1){
+                    result += defineType(params[i]) + this.displaySpace()+ params[i] + ", ";
+                }
+                else{
+                    result += defineType(params[i]) + this.displaySpace() + params[i];
+                }
+            }
+        }
+        return result;
+    }
   
     
 }

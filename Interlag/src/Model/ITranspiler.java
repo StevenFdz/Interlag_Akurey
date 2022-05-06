@@ -6,15 +6,17 @@ package Model;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
+ * This class is the base of our transpilers in interlag, this interface is 
+ * implemented in tha abstract class Transpiler. The objective of this is that 
+ * be a mandatory that all the new languages that we will implemented is going
+ * to have all this functions, allowing the scalability
  */
 public interface ITranspiler {
     
-    public void translate();
-    
     public String translateVariable(String nameVar, String valueVar);
     
-    public String translateFunction(String nameFunction, String[] params);
+    public String translateDefineFunction(String nameFunction, String[] params);
     
     public String translateClass(String nameClass);
     
@@ -26,7 +28,20 @@ public interface ITranspiler {
     
     public String translateFor(String item, String arrayList);
     
-    public String translateImport(String expression);
+    public String translateImport(String name_library);
     
     public String translateEnd();
+    
+    /*
+        We can add new function in our transpilers only adding this function here 
+        and implemented the bahivior in the corresponding transpiler. For example
+        we can do the next
+    
+    
+        public String translateWhileDo(String value1,String value2,String conditional);
+    
+        public String translateUseVariable(String item, String arrayList);
+    
+        public String translateApplyFunctions(String name_library);
+    */ 
 }

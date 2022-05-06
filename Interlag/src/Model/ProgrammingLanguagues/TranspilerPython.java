@@ -8,14 +8,9 @@ import Model.Transpiler;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
  */
 public class TranspilerPython extends Transpiler{
-
-    @Override
-    public void translate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public String translateVariable(String nameVar, String valueVar) {
@@ -23,7 +18,7 @@ public class TranspilerPython extends Transpiler{
     }
 
     @Override
-    public String translateFunction(String nameFunction, String[] params) {
+    public String translateDefineFunction(String nameFunction, String[] params) {
         String result = this.getIndent() + "def " + 
                 nameFunction + "(" + this.getStructParams(params) + "):\n";
         addTab();
@@ -39,7 +34,7 @@ public class TranspilerPython extends Transpiler{
 
     @Override
     public String translateImport(String name_library) {
-        String result = this.getIndent() + "import " + name_library + ";\n";
+        String result = this.getIndent() + "import " + name_library + "\n";
         return result;
     }
 
@@ -78,8 +73,5 @@ public class TranspilerPython extends Transpiler{
                 " in "  + arrayList + " :\n";
         addTab();
         return result;
-    }
-
-    
-    
+    }    
 }

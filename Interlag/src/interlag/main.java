@@ -11,7 +11,7 @@ import Controller.Controller_Transpiler_TranslateScreen;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
  */
 public class main {
 

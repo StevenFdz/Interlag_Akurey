@@ -6,7 +6,12 @@ package Model;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
+ * This interface must implement all these typed languages, the objective is 
+ * get a way to understand the type data of the variables of functions in this
+ * languagues, this because if we won't define a variable with its type
+ * this return us an error, and for allow that all the classes have a similar 
+ * behavior I decided create this interface
  */
 public interface ItypeLanguage {
     

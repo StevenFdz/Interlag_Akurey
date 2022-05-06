@@ -6,22 +6,26 @@ package Model;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
+ * This interface is the way in how interlag implement the GUIs for the languagues.
+ * In short, all new GUI must implemented this methods that currently are very
+ * basics but when we will want implemented all the functionalities of a GUI
+ * only we will have to add a new function here and all the sub classes that 
+ * define the behavior of the languages must implement the new function
  */
 public interface I_UIGenerator {
+
+    public String initLibrary();
     
-    public void createScreen();
+    public String createScreen(String variable_result, String name_screen);
     
-    public void createLabel();
+    public String createLabel(String variable_result, String label_text);
     
-    public void createButton();
+    public String createButton(String variable_result, String button_text);
     
-    public void createInput();
+    public String createInput(String variable_result);
     
-    public void createSelector();
+    public String createSelector(String variable_result);
     
-    public void createCheckButton();
-    
-    public void createPanel();  
-    
+    public String createPanel(String variable_result);   
 }

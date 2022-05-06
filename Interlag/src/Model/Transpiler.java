@@ -6,59 +6,26 @@ package Model;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
+ * This is the base of all the transpilers that Interlag would have, every that
+ * we will implement must extends of this class. It is an abstract class
+ * because the attribute UI_generator is a characteristic that all the languagues
+ * must implemented, at the same time some syntax in the programming languagues
+ * is similar for example Java and C++/# so in this class we can implemented
+ * the typical struct about an if or while that is same in this languages, this
+ * for avoid the code repeated
  */
-public abstract class Transpiler implements ITranspiler {
-    protected I_UIGenerator UI_generator;
-    protected String indent = "";
+public abstract class Transpiler extends StructCode implements ITranspiler {
+    protected UI_Generator UI_generator;
 
- 
-    public I_UIGenerator getUI_generator() {
+    public UI_Generator getUI_generator() {
         return UI_generator;
     }
 
-    public void setUI_generator(I_UIGenerator UI_generator) {
+    public void setUI_generator(UI_Generator UI_generator) {
         this.UI_generator = UI_generator;
     }
 
-    public String getIndent() {
-        return indent;
-    }
-
-    public void setIndent(String indent) {
-        this.indent = indent;
-    }
-    
-    public String displaySpace(){
-        return " ";
-    }
-    
-    public void deleteOneIndent(){
-        this.setIndent(this.getIndent().substring(0, this.getIndent().length()-1));
-        if(this.getIndent() == null){
-            this.setIndent("");
-        }
-    }
-    
-    public void addTab(){
-        this.setIndent(this.getIndent() + "\t");
-    }
-    
-    public String getStructParams(String[] params){
-        String result = "";
-        if(params != null){
-            for(int i=0;i < params.length; i++){
-                if(i != params.length - 1){
-                    result += params[i] + ", ";
-                }
-                else{
-                    result += params[i];
-                }
-            }
-        }
-        return result;
-    }
-    
     @Override
     public String translateBifurcationIf(String value1, String value2, String conditional) {
         String result = this.getIndent() + "if( " + value1 + displaySpace() +
@@ -94,12 +61,5 @@ public abstract class Transpiler implements ITranspiler {
         String result = this.getIndent() + "class " + nameClass + " {\n";
         addTab();
         return result;
-    }
-
-
-
-
-    
-    
-    
+    }   
 }

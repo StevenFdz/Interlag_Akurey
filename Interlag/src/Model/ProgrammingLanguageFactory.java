@@ -11,11 +11,14 @@ import Model.ProgrammingLanguagues.TranspilerTypeScript;
 
 /**
  *
- * @author steve
+ * @author Estiven Fernández
+ * In this file we instance the type of language that we are going to use
+ * only is neccesary send the enum of the programming language and the calss
+ * return us one instance of the object that we request
  */
 public class ProgrammingLanguageFactory {
     
-    public static Transpiler instanceTranspiler(EnumProgrammingLanguagues programmingLanguague){
+    public static Transpiler instanceTranspiler(EnumProgrammingLanguages programmingLanguague){
         switch(programmingLanguague){
             case C_SHARP:
                 return new TranspilerC_Sharp();

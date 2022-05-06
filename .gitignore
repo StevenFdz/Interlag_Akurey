@@ -21,3 +21,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+Interlag/build/classes/.netbeans_automatic_build
+Interlag/build/classes/.netbeans_update_resources
+Interlag/nbproject/build-impl.xml
+Interlag/nbproject/genfiles.properties
+Interlag/nbproject/private/private.xml
+*.xml
+*.properties
+Interlag/build/classes/View/TranslateScreen.form
+Interlag/manifest.mf

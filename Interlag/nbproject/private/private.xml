@@ -11,7 +11,9 @@
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/interlag/main.java</file>
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/I_UIGenerator.java</file>
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/ProgrammingLanguagues/TranspilerC_Sharp.java</file>
+            <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/ItypeLanguage.java</file>
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/ITranspiler.java</file>
+            <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/ProgrammingLanguageFactory.java</file>
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/Transpiler.java</file>
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/ProgrammingLanguagues/TranspilerPython.java</file>
             <file>file:/C:/Users/steve/Documents/NetBeansProjects/Interlag/src/Model/ProgrammingLanguagues/TranspilerTypeScript.java</file>

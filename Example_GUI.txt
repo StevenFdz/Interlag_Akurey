@@ -1,0 +1,14 @@
+This example show us how we can manage with the GUI 
+Code--------------------------------------------------------------
+
+initGUI
+class GUI
+GUI screen screen "I_am_screen"  
+GUI button button "Click_me"
+GUI label label 'I_am_label'
+GUI input textField 
+GUI selector comboBox
+GUI panel my_panel
+end
+
+----------------------------------------------------------------

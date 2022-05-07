@@ -1,0 +1,19 @@
+This is example of the loops and one import only for see how works
+
+Code---------------------------------------------------------
+
+import random
+
+var set [1,2,3,4,5]
+while set.lenght() > 0
+var number set[0]
+end
+
+
+var secondSet [1,2,3,4,5]
+for value secondSet
+var number value
+end
+
+
+-------------------------------------------------------------

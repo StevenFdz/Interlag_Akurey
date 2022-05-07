@@ -1,0 +1,14 @@
+This example create a class with two attributes and one function
+without implemented it
+
+Code-----------------------------------------------------
+
+class persona
+var nombre julieta
+var apellido ramirez
+funct displayNombre nombre apellido
+end
+end
+
+
+----------------------------------------------------------
